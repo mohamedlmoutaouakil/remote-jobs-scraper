@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import pprint
 
-class Scraper:
+class RemoteJobsScraper:
     def __init__(self, URL):
         self.URL = URL
 
@@ -44,8 +44,8 @@ def main():
         q_parameter = '+'.join(keywords)
         URL = URL + '?q=' + q_parameter + '&r=true' # r=true to search for Remote jobs only
     # instanciate scraper class
-    scraper = Scraper(URL)
-    jobs_list = scraper.get_jobs_list()
+    remoteJobsScraper = RemoteJobsScraper(URL)
+    jobs_list = remoteJobsScraper.get_jobs_list()
     pp = pprint.PrettyPrinter()
     pp.pprint(jobs_list)
 
