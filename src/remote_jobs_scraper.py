@@ -8,6 +8,9 @@ class RemoteJobsScraper:
 
     def _get_results_list(self):
         html_page = requests.get(self.URL)
+        # in case the response failure
+        if not html_page.ok :
+            return []
         soup = BeautifulSoup(html_page.content, 'html.parser')
         results = soup.find('div', class_='listResults')
         results_list = results.find_all('div', class_='-job')
